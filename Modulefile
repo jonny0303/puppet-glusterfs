@@ -1,5 +1,5 @@
 name 'thias-glusterfs'
-version '0.0.3'
+version '0.0.4'
 source 'git://github.com/thias/puppet-glusterfs'
 author 'Matthias Saou'
 license 'Apache 2.0'

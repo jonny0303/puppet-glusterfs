@@ -21,9 +21,13 @@ class glusterfs::server (
   # Main package and service it provides
   package { 'glusterfs-server': ensure => installed }
   service { 'glusterd':
-    enable    => true,
-    ensure    => running,
-    hasstatus => true,
+    enable      => true,
+    ensure      => running,
+    hasstatus   => true,
+    name        => $::osfamily ? {
+        debian  => 'glusterfs-server',
+        default => 'glusterd'
+    },
     require   => Package['glusterfs-server'],
   }
 
