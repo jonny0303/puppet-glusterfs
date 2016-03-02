@@ -11,10 +11,7 @@ define glusterfs::volume (
   $create_options
 ) {
 
-  $vols_dir = $::osfamily ? {
-    debian  => '/etc/glusterd/vols',
-    default => '/var/lib/glusterd/vols'
-  }
+  $vols_dir = '/var/lib/glusterd/vols'
 
   exec { "gluster volume create ${title}":
     command => "/usr/sbin/gluster volume create ${title} ${create_options}",
