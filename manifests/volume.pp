@@ -23,7 +23,8 @@ define glusterfs::volume (
   }
 
   exec { "/usr/sbin/gluster volume start ${title}":
-    unless  => "[ \"`gluster volume info ${title} | egrep '^Status:'`\" = 'Status: Started' ]",
+#    unless  => "[ \"`gluster volume info ${title} | egrep '^Status:'`\" = 'Status: Started' ]",
+    unless  => "gluster volume info ${title} | grep '^Status: Started'",
     path    => [ '/usr/sbin', '/usr/bin', '/sbin', '/bin' ],
     require => Exec["gluster volume create ${title}"],
   }
